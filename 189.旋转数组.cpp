@@ -43,14 +43,26 @@
  */
 class Solution {
 public:
+/*
+ * 三次旋转
+ */
     void rotate(vector<int>& nums, int k) {
-        int size=nums.size();
-        k=(k%size);
-        if (k==0)
+       int size=nums.size();
+       k=k%size;
+       if (k==0)
+       {
+           return ;
+       }
+       reverseArray(nums,0,size-k-1);
+       reverseArray(nums,size-k,size-1);
+       reverseArray(nums,0,size-1);
+    }
+    void reverseArray(vector<int> & array,int begin,int end)
+    {
+        for (size_t i = begin,j=end; i <=(begin+end)/2; i++,--j)
         {
-            return ;
+            swap(array[i],array[j]);
         }
-        
         
     }
 };
